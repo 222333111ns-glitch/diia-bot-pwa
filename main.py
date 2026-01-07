@@ -445,5 +445,6 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
     threading.Thread(target=run_flask, daemon=True).start()
     asyncio.run(main())
