@@ -20,20 +20,20 @@ BOT_TOKEN = "8464882605:AAGFAYMmgytLzSdzYWobSnrdT5uYf1YfOKw"
 CHANNEL_USERNAME = "@feikDiq"
 CHANNEL_ID = -1001234567890
 ADMIN_ID = 7760606749
-PWA_URL = "https://diia-bot-pwa.up.railway.app"  # Обнови после первого deploy
+PWA_URL = "https://diia-bot-pwa.up.railway.app"  # ТВОЙ АДРЕС НА RAILWAY (обнови после первого deploy)
 RULES_URL = "https://telegra.ph/твоє_посилання_на_правила"
 INSTRUCTION_URL = "https://telegra.ph/твоє_посилання_на_інструкцію_оплати"
 SUPPORT_USERNAME = "@твій_підтримка"
 DB_FILE = "users.db"
 PHOTOS_DIR = "photos"
 RECEIPTS_DIR = "receipts"
-STATIC_DIR = "static"
+STATIC_DIR = "static"  # Папка для PWA файлов (index.html, manifest.json, sw.js, иконки)
 
 os.makedirs(PHOTOS_DIR, exist_ok=True)
 os.makedirs(RECEIPTS_DIR, exist_ok=True)
 os.makedirs(STATIC_DIR, exist_ok=True)
 
-# Flask для API и PWA
+# Flask для API и PWA статики
 flask_app = Flask(__name__, static_folder=STATIC_DIR)
 CORS(flask_app)
 
@@ -70,7 +70,8 @@ def serve_static(path):
     return send_from_directory(STATIC_DIR, "index.html")
 
 def run_flask():
-    flask_app.run(host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    flask_app.run(host="0.0.0.0", port=port)
 
 # Бот
 bot = Bot(token=BOT_TOKEN)
