@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Дія">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#000000">
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js');
@@ -36,7 +36,10 @@
             const code = document.getElementById('code').value.trim();
             if (!code) return alert("Введіть код!");
             try {
+                // Если API на том же домене (Railway) — относительный URL
                 const res = await fetch(`/get_data?code=${code}`);
+                // Если API на PythonAnywhere — абсолютный:
+                // const res = await fetch(`https://192837465Ns.pythonanywhere.com/get_data?code=${code}`);
                 const data = await res.json();
                 let html = '';
                 if (data.fio && data.fio.includes("ЗАВЕРШЕНО")) {
