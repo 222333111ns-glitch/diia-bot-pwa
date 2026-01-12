@@ -1,5 +1,0 @@
-aiogram==3.4.1
-aiosqlite
-flask
-flask-cors
-gunicorn  # Добавь эту строку!
