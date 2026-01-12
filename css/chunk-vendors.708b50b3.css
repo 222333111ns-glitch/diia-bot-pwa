@@ -1,0 +1,115 @@
+.bottom-sheet[data-v-f0c780e0] {
+	z-index: 99999;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transition: visibility var(--42568111)
+}
+
+.bottom-sheet [data-v-f0c780e0] {
+	box-sizing: border-box
+}
+
+.bottom-sheet[aria-hidden=false][data-v-f0c780e0] {
+	visibility: visible
+}
+
+.bottom-sheet[aria-hidden=true][data-v-f0c780e0] {
+	visibility: hidden;
+	pointer-events: none
+}
+
+.bottom-sheet__overlay[data-v-f0c780e0] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	background: var(--0327c788)
+}
+
+.bottom-sheet__content[data-v-f0c780e0] {
+	display: flex;
+	flex-direction: column;
+	border-radius: 16px 16px 0 0;
+	background: #fff;
+	overflow-y: hidden;
+	transform: translate3d(0, var(--7008c7cb), 0);
+	height: var(--09c72560);
+	max-width: var(--734f206c);
+	width: 100%;
+	max-height: var(--152d8c25);
+	box-sizing: border-box;
+	pointer-events: all
+}
+
+.bottom-sheet__content--fullscreen[data-v-f0c780e0] {
+	border-radius: 0
+}
+
+.bottom-sheet__content[data-v-f0c780e0]:not(.bottom-sheet__content--dragging) {
+	transition: var(--42568111) ease
+}
+
+.bottom-sheet__draggable-area[data-v-f0c780e0] {
+	width: 100%;
+	margin: auto;
+	padding: 16px;
+	cursor: grab
+}
+
+.bottom-sheet__draggable-thumb[data-v-f0c780e0] {
+	width: 40px;
+	height: 4px;
+	background: #333;
+	border-radius: 8px;
+	margin: 0 auto
+}
+
+.bottom-sheet__main[data-v-f0c780e0] {
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	box-sizing: border-box;
+	-webkit-overflow-scrolling: touch;
+	touch-action: auto !important
+}
+
+.bottom-sheet__main[data-v-f0c780e0]::-webkit-scrollbar {
+	height: 8px;
+	width: 8px
+}
+
+.bottom-sheet__main[data-v-f0c780e0]::-webkit-scrollbar-corner {
+	display: none
+}
+
+.bottom-sheet__main[data-v-f0c780e0]:hover::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, .2);
+	border-radius: 8px
+}
+
+.bottom-sheet__main[data-v-f0c780e0]::-webkit-scrollbar-thumb {
+	background-color: transparent
+}
+
+.bottom-sheet__footer[data-v-f0c780e0]:empty {
+	display: none
+}
+
+.v-enter-active[data-v-f0c780e0],
+.v-leave-active[data-v-f0c780e0] {
+	transition: opacity var(--42568111) ease
+}
+
+.v-enter-from[data-v-f0c780e0],
+.v-leave-to[data-v-f0c780e0] {
+	opacity: 0
+}
