@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#000000">
+  <title>Дія</title>
+
+  <!-- Підключення manifest (PWA) -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Іконки (завантажимо їх нижче) -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/img/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="/img/icons/icon-192.png">
+
+  <!-- Поки без CSS/JS, додамо пізніше -->
+  <style>
+    body { margin:0; font-family:Arial, sans-serif; background:#f5f5f5; }
+    #instruction { text-align:center; padding:40px; }
+    #app { display:none; height:100vh; justify-content:center; align-items:center; flex-direction:column; }
+    input { padding:15px; font-size:20px; width:300px; margin:20px 0; border-radius:10px; border:2px solid #ccc; }
+    button { padding:15px 40px; font-size:20px; background:#0066ff; color:white; border:none; border-radius:10px; cursor:pointer; }
+    #result { margin-top:20px; font-size:18px; }
+  </style>
+</head>
+<body>
+  <div id="instruction">
+    <h1>Дія</h1>
+    <p>Щоб встановити додаток:</p>
+    <p>1. Натисни три точки вгорі праворуч</p>
+    <p>2. Обери "Додати на головний екран"</p>
+    <p>3. Натисни "Додати"</p>
+  </div>
+
+  <div id="app">
+    <h1>Дія</h1>
+    <p>Введіть код від бота:</p>
+    <input type="text" id="codeInput" placeholder="Наприклад: ABC123">
+    <button onclick="checkCode()">Увійти</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    // Перевірка режиму standalone (після установки)
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      document.getElementById('instruction').style.display = 'none';
+      document.getElementById('app').style.display = 'flex';
+    }
+
+    function checkCode() {
+      const code = document.getElementById('codeInput').value.trim();
+      const result = document.getElementById('result');
+      if (!code) {
+        result.textContent = "Введіть код!";
+        result.style.color = "red";
+        return;
+      }
+      result.textContent = "Перевірка...";
+      result.style.color = "blue";
+
+      // Тут буде fetch до твого сервера/бота
+      // Приклад:
+      fetch(`/get_data?code=${code}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            result.innerHTML = "Успіх!<br>ПІБ: " + (data.fio || "?") + "<br>Дата: " + (data.birth || "?");
+            result.style.color = "green";
+          } else {
+            result.textContent = "Невірний код";
+            result.style.color = "red";
+          }
+        })
+        .catch(() => {
+          result.textContent = "Помилка з'єднання";
+          result.style.color = "red";
+        });
+    }
+  </script>
+</body>
+</html>
