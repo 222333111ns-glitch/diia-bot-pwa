@@ -6,136 +6,57 @@
   <meta name="theme-color" content="#000000">
   <title>Дія</title>
 
-  <!-- Офіційний шрифт e-Ukraine -->
+  <!-- Шрифт e-Ukraine -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=e-Ukraine:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-  <!-- PWA manifest -->
+  <!-- PWA -->
   <link rel="manifest" href="/manifest.json">
-
-  <!-- Іконки -->
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icons/icon-192.png">
   <link rel="apple-touch-icon" sizes="192x192" href="/img/icons/icon-192.png">
 
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'e-Ukraine', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #ffffff;
-      color: #000000;
+      font-family: 'e-Ukraine', system-ui, sans-serif;
+      background: #fff;
+      color: #000;
       min-height: 100vh;
-      overflow-x: hidden;
-      text-align: center;
       display: flex;
       justify-content: center;
       align-items: center;
+      text-align: center;
     }
 
-    /* Екран інструкції — ТОЧНО як на твоїх скріншотах */
     #instruction {
-      max-width: 600px;
+      max-width: 500px;
       padding: 40px 20px;
     }
 
-    #instruction h1 {
-      font-size: 5.5rem;           /* Дуже великий, як в оригіналі */
+    h1 {
+      font-size: 4.2rem;
       font-weight: 700;
-      margin: 0 0 80px 0;          /* Великий відступ знизу — вище центру */
-      line-height: 1;
-      letter-spacing: -0.02em;
+      margin: 0 0 60px 0;
     }
 
-    #instruction ol {
+    ol {
       list-style: none;
       padding: 0;
       margin: 0;
     }
 
-    #instruction li {
-      font-size: 2.1rem;           /* Менший, ніж заголовок */
+    li {
+      font-size: 1.8rem;
       font-weight: 400;
-      margin: 60px 0;              /* ДУЖЕ великі відступи між рядками */
-      line-height: 2.4;            /* Повітряний інтервал, як на скріні */
-      text-align: center;          /* По центру своєї лінії */
-    }
-
-    /* Екран після установки (поле коду) */
-    #app {
-      display: none;
-      min-height: 100vh;
-      background: #f8f9fa;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
-    }
-
-    .logo {
-      width: 160px;
-      margin-bottom: 60px;
-    }
-
-    h1 {
-      font-size: 3.8rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .subtitle {
-      font-size: 1.7rem;
-      color: #444;
-      margin-bottom: 60px;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 440px;
-      background: white;
-      border-radius: 28px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      padding: 50px 40px;
-    }
-
-    input {
-      width: 100%;
-      padding: 22px;
-      font-size: 2.1rem;
-      text-align: center;
-      border: 2px solid #ddd;
-      border-radius: 18px;
-      margin-bottom: 30px;
-      transition: border-color 0.3s;
-    }
-
-    input:focus {
-      outline: none;
-      border-color: #0066ff;
-    }
-
-    button {
-      width: 100%;
-      padding: 22px;
-      font-size: 1.75rem;
-      font-weight: 600;
-      background: #0066ff;
-      color: white;
-      border: none;
-      border-radius: 18px;
-      cursor: pointer;
-    }
-
-    #result {
-      margin-top: 40px;
-      font-size: 1.6rem;
-      min-height: 80px;
+      margin: 24px 0;
+      line-height: 1.3; /* значно менший інтервал */
     }
   </style>
 </head>
 <body>
 
-  <!-- Екран інструкції — ТОЧНО як на скріншотах -->
+  <!-- Екран інструкції — компактний, як в оригіналі -->
   <div id="instruction">
     <h1>Chrome</h1>
     <ol>
@@ -144,41 +65,11 @@
     </ol>
   </div>
 
-  <!-- Екран після установки -->
-  <div id="app">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Diia_logo.svg/512px-Diia_logo.svg.png" alt="Дія" class="logo">
-    <h1>Дія</h1>
-    <p class="subtitle">Введіть код від бота</p>
-    
-    <div class="card">
-      <input type="text" id="codeInput" placeholder="Наприклад: 97Vc82ca" autofocus>
-      <button onclick="skipToNext()">УВІЙТИ</button>
-    </div>
-    
-    <p id="result"></p>
-  </div>
-
   <script>
-    // Перевірка standalone-режиму
-    function checkStandalone() {
-      if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-        document.getElementById('instruction').style.display = 'none';
-        document.getElementById('app').style.display = 'flex';
-        document.getElementById('codeInput').focus();
-      }
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+      document.getElementById('instruction').style.display = 'none';
+      // Тут буде поле коду — додай коли будеш готовий
     }
-    checkStandalone();
-
-    // Пропуск по кнопці
-    function skipToNext() {
-      document.getElementById('result').innerHTML = 'Успіх!<br>Завантажуємо дані...';
-      document.getElementById('result').style.color = '#34c759';
-    }
-
-    // Enter → Увійти
-    document.getElementById('codeInput').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') skipToNext();
-    });
   </script>
 </body>
 </html>
