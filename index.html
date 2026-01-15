@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000000">
   <title>Дія</title>
 
-  <!-- Офіційний шрифт e-Ukraine (як в Дії) -->
+  <!-- Офіційний шрифт e-Ukraine -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=e-Ukraine:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
   <!-- PWA manifest -->
   <link rel="manifest" href="/manifest.json">
 
-  <!-- Іконки (завантаж їх у img/icons/) -->
+  <!-- Іконки -->
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icons/icon-192.png">
   <link rel="apple-touch-icon" sizes="192x192" href="/img/icons/icon-192.png">
 
@@ -26,45 +26,42 @@
       background: #ffffff;
       color: #000000;
       min-height: 100vh;
-      line-height: 1.4;
-      letter-spacing: -0.01em;
       overflow-x: hidden;
       text-align: center;
-    }
-
-    /* Екран інструкції — ТОЧНО як на скріншоті */
-    #instruction {
-      min-height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+    }
+
+    /* Екран інструкції — ТОЧНО як на твоїх скріншотах */
+    #instruction {
+      max-width: 600px;
       padding: 40px 20px;
     }
 
     #instruction h1 {
-      font-size: 4.2rem;          /* трохи більше звичайного тексту */
+      font-size: 5.5rem;           /* Дуже великий, як в оригіналі */
       font-weight: 700;
-      margin-bottom: 60px;        /* вище центру */
-      color: #000;
+      margin: 0 0 80px 0;          /* Великий відступ знизу — вище центру */
+      line-height: 1;
+      letter-spacing: -0.02em;
     }
 
     #instruction ol {
       list-style: none;
       padding: 0;
       margin: 0;
-      max-width: 600px;
     }
 
     #instruction li {
-      font-size: 1.75rem;         /* менший ніж заголовок */
+      font-size: 2.1rem;           /* Менший, ніж заголовок */
       font-weight: 400;
-      margin: 32px 0;
-      line-height: 1.45;
-      text-align: center;         /* по центру своєї лінії */
+      margin: 60px 0;              /* ДУЖЕ великі відступи між рядками */
+      line-height: 2.4;            /* Повітряний інтервал, як на скріні */
+      text-align: center;          /* По центру своєї лінії */
     }
 
-    /* Екран після установки */
+    /* Екран після установки (поле коду) */
     #app {
       display: none;
       min-height: 100vh;
@@ -78,7 +75,6 @@
     .logo {
       width: 160px;
       margin-bottom: 60px;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.12));
     }
 
     h1 {
@@ -91,7 +87,6 @@
       font-size: 1.7rem;
       color: #444;
       margin-bottom: 60px;
-      text-align: center;
     }
 
     .card {
@@ -129,24 +124,18 @@
       border: none;
       border-radius: 18px;
       cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:active {
-      background: #0055cc;
     }
 
     #result {
       margin-top: 40px;
       font-size: 1.6rem;
-      text-align: center;
       min-height: 80px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Екран інструкції — ТОЧНО як на твоєму скріншоті -->
+  <!-- Екран інструкції — ТОЧНО як на скріншотах -->
   <div id="instruction">
     <h1>Chrome</h1>
     <ol>
@@ -180,16 +169,10 @@
     }
     checkStandalone();
 
-    // Просто пропускає (без перевірки коду)
+    // Пропуск по кнопці
     function skipToNext() {
-      const result = document.getElementById('result');
-      result.innerHTML = 'Перевірка...';
-      result.style.color = '#0066ff';
-
-      setTimeout(() => {
-        result.innerHTML = 'Успіх!<br>Завантажуємо ваші дані...';
-        result.style.color = '#34c759';
-      }, 1500);
+      document.getElementById('result').innerHTML = 'Успіх!<br>Завантажуємо дані...';
+      document.getElementById('result').style.color = '#34c759';
     }
 
     // Enter → Увійти
