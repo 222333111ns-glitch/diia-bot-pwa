@@ -30,14 +30,14 @@
     }
 
     #instruction {
-      max-width: 500px;
-      padding: 40px 20px;
+      max-width: 480px;
+      padding: 30px 20px;
     }
 
     h1 {
-      font-size: 4.2rem;
+      font-size: 3.8rem;      /* великий, але не перебільшений */
       font-weight: 700;
-      margin: 0 0 60px 0;
+      margin: 0 0 40px 0;
     }
 
     ol {
@@ -47,16 +47,16 @@
     }
 
     li {
-      font-size: 1.8rem;
+      font-size: 1.35rem;     /* маленький текст, як на скріні */
       font-weight: 400;
-      margin: 24px 0;
-      line-height: 1.3; /* значно менший інтервал */
+      margin: 12px 0;         /* мінімальні відступи */
+      line-height: 1.3;       /* текст "притиснутий", як в оригіналі */
     }
   </style>
 </head>
 <body>
 
-  <!-- Екран інструкції — компактний, як в оригіналі -->
+  <!-- ТОЧНО як на останньому скріншоті -->
   <div id="instruction">
     <h1>Chrome</h1>
     <ol>
@@ -66,9 +66,10 @@
   </div>
 
   <script>
+    // Перевірка standalone-режиму (після установки ховає інструкцію)
     if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
       document.getElementById('instruction').style.display = 'none';
-      // Тут буде поле коду — додай коли будеш готовий
+      // Тут пізніше додамо поле коду
     }
   </script>
 </body>
